@@ -25,6 +25,7 @@ import { addOrderItem, readtodayOrders } from '../services/storageService.js';
 export async function initiateHubRiseConnection(request, env, decoded) {
   try {
     const organizationId = decoded.userClaims.MotelID;
+    const businessName = decoded.userClaims.BusinessName || 'Unknown';
     
     if (!organizationId) {
       return new Response(JSON.stringify({ error: 'Organization ID not found' }), {
@@ -33,13 +34,16 @@ export async function initiateHubRiseConnection(request, env, decoded) {
       });
     }
     
-    // Build OAuth URL
+    // Build OAuth URL with state containing org ID and business name
+    const stateData = JSON.stringify({ orgId: organizationId, businessName });
+    const encodedState = btoa(stateData); // Base64 encode
+    
     const authUrl = new URL('https://manager.hubrise.com/oauth2/v1/authorize');
     authUrl.searchParams.append('client_id', env.HUBRISE_CLIENT_ID);
     authUrl.searchParams.append('redirect_uri', env.HUBRISE_REDIRECT_URI);
     authUrl.searchParams.append('scope', env.HUBRISE_SCOPE || 'location[orders.write,catalog.write]');
     authUrl.searchParams.append('response_type', 'code');
-    authUrl.searchParams.append('state', organizationId);
+    authUrl.searchParams.append('state', encodedState);
     
     return new Response(JSON.stringify({ 
       authUrl: authUrl.toString(),
@@ -68,7 +72,7 @@ export async function handleHubRiseCallback(request, env) {
   try {
     const url = new URL(request.url);
     const code = url.searchParams.get('code');
-    const organizationId = url.searchParams.get('state');
+    const encodedState = url.searchParams.get('state');
     const error = url.searchParams.get('error');
     
     if (error) {
@@ -76,8 +80,21 @@ export async function handleHubRiseCallback(request, env) {
       return Response.redirect(`${env.APP_URL}/admin/settings/integrations?error=${error}`, 302);
     }
     
-    if (!code || !organizationId) {
+    if (!code || !encodedState) {
       return new Response('Invalid callback parameters', { status: 400 });
+    }
+    
+    // Decode state to get organization ID and business name
+    let organizationId, businessName;
+    try {
+      const stateData = JSON.parse(atob(encodedState));
+      organizationId = stateData.orgId;
+      businessName = stateData.businessName || 'Unknown';
+    } catch (decodeError) {
+      // Fallback for old format (just orgId as string)
+      console.warn('Failed to decode state, using as orgId directly:', decodeError);
+      organizationId = encodedState;
+      businessName = 'Unknown';
     }
     
     // Exchange code for tokens
@@ -88,13 +105,38 @@ export async function handleHubRiseCallback(request, env) {
       env.HUBRISE_REDIRECT_URI
     );
     
+    // Log tokens for debugging (remove in production)
+    console.log('Token response:', {
+      hasAccessToken: !!tokens.access_token,
+      hasRefreshToken: !!tokens.refresh_token,
+      accountId: tokens.account_id,
+      locationId: tokens.location_id,
+      expiresIn: tokens.expires_in
+    });
+    
     // Get account info
-    let accountName = 'Unknown';
-    try {
-      const accountInfo = await getAccountInfo(tokens.access_token, tokens.account_id);
-      accountName = accountInfo.name || accountName;
-    } catch (err) {
-      console.error('Failed to get account info:', err);
+    let accountName = businessName; // Use business name from JWT as default
+    if (tokens.account_id) {
+      try {
+        const accountInfo = await getAccountInfo(tokens.access_token, tokens.account_id);
+        console.log('Account info response:', accountInfo);
+        accountName = accountInfo.name || accountInfo.account_name || accountName;
+      } catch (err) {
+        console.error('Failed to get account info:', err.message);
+        // Try to get location info as fallback
+        if (tokens.location_id) {
+          try {
+            const locationInfo = await getLocationInfo(tokens.access_token, tokens.location_id);
+            console.log('Location info response:', locationInfo);
+            accountName = locationInfo.name || accountName;
+          } catch (locErr) {
+            console.error('Failed to get location info:', locErr.message);
+            // Keep businessName as final fallback
+          }
+        }
+      }
+    } else {
+      console.warn('No account_id in token response, using business name from JWT:', businessName);
     }
     
     // Encrypt tokens
