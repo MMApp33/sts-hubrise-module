@@ -25,6 +25,7 @@ database_id = "81ef3fc0-494d-4fa8-9a6b-9898d94636cf"
   HUBRISE_SCOPE = "location[orders.write,catalog.write]"
   HUBRISE_WEBHOOK_SECRET = "ZUKa3QsELW08ijF7PYGph5Tq216eRkDB"
   ENCRYPTION_SECRET = "o/D3qrh6FBZ3KEHwKRX+vdQmx5qSSVFsFf4djVXltLM="
+  APP_URL = "https://scantoserve.com"
 EC_PUBLIC_KEY_PEM = """-----BEGIN PUBLIC KEY-----
 MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEFai15exM09bzjhnnjI37zLMZ2swt
 mY7n1jBeAfawXaNGXFU+TVQB3BWMRtDMPaPUrH9Ic2KXPYW+1f08nDpEng==
@@ -53,6 +54,7 @@ routes = ["https://api.scantoserve.com/api/hubrise/*"]
   HUBRISE_SCOPE = "location[orders.write,catalog.write]"
   HUBRISE_WEBHOOK_SECRET = "ZUKa3QsELW08ijF7PYGph5Tq216eRkDB"
   ENCRYPTION_SECRET = "o/D3qrh6FBZ3KEHwKRX+vdQmx5qSSVFsFf4djVXltLM="
+  APP_URL = "https://scantoserve.com"
 EC_PUBLIC_KEY_PEM = """-----BEGIN PUBLIC KEY-----
 MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEFai15exM09bzjhnnjI37zLMZ2swt
 mY7n1jBeAfawXaNGXFU+TVQB3BWMRtDMPaPUrH9Ic2KXPYW+1f08nDpEng==
@@ -82,6 +84,7 @@ route = "https://api.scantoserve.com/api/hubrise/*"
   HUBRISE_SCOPE = "location[orders.write,catalog.write]"
   HUBRISE_WEBHOOK_SECRET = "ZUKa3QsELW08ijF7PYGph5Tq216eRkDB"
   ENCRYPTION_SECRET = "o/D3qrh6FBZ3KEHwKRX+vdQmx5qSSVFsFf4djVXltLM="
+  APP_URL = "https://scantoserve.com"
 EC_PUBLIC_KEY_PEM = """-----BEGIN PUBLIC KEY-----
 MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEFai15exM09bzjhnnjI37zLMZ2swt
 mY7n1jBeAfawXaNGXFU+TVQB3BWMRtDMPaPUrH9Ic2KXPYW+1f08nDpEng==
