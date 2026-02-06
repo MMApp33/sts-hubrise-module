@@ -160,6 +160,8 @@ export async function handleHubRiseCallback(request, env) {
         refresh_token = excluded.refresh_token,
         token_expires_at = excluded.token_expires_at,
         account_name = excluded.account_name,
+        is_active = 1,
+        connected_at = datetime('now'),
         updated_at = datetime('now')
     `).bind(
       connectionId,
