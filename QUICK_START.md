@@ -28,7 +28,7 @@ HUBRISE_REDIRECT_URI = "https://api.scantoserve.com/api/hubrise/callback"
 HUBRISE_SCOPE = "location[orders.write,catalog.write]"
 HUBRISE_WEBHOOK_SECRET = "your_generated_webhook_secret"
 ENCRYPTION_SECRET = "your_generated_encryption_secret"
-APP_URL = "https://app.scantoserve.com"
+APP_URL = "https://scantoserve.com"
 ```
 
 ### Step 4: Initialize Database (30 seconds)

@@ -19,6 +19,12 @@ database_id = "81ef3fc0-494d-4fa8-9a6b-9898d94636cf"
   CDN_URL = "https://assets.scantoserve.com/"
   BLOB_URL = "https://blob.scantoserve.com/"
   API_ENDPOINT = "https://devapi.scantoserve.com"
+  HUBRISE_CLIENT_ID = "925386709174.clients.hubrise.com"
+  HUBRISE_CLIENT_SECRET = "0117db77c9b1c702a5c2e9261c503855029ef2555991df2d728ccf4f3fc97a8a"
+  HUBRISE_REDIRECT_URI = "https://api.scantoserve.com/api/hubrise/callback"
+  HUBRISE_SCOPE = "location[orders.write,catalog.write]"
+  HUBRISE_WEBHOOK_SECRET = "ZUKa3QsELW08ijF7PYGph5Tq216eRkDB"
+  ENCRYPTION_SECRET = "o/D3qrh6FBZ3KEHwKRX+vdQmx5qSSVFsFf4djVXltLM="
 EC_PUBLIC_KEY_PEM = """-----BEGIN PUBLIC KEY-----
 MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEFai15exM09bzjhnnjI37zLMZ2swt
 mY7n1jBeAfawXaNGXFU+TVQB3BWMRtDMPaPUrH9Ic2KXPYW+1f08nDpEng==
@@ -41,6 +47,12 @@ routes = ["https://api.scantoserve.com/api/hubrise/*"]
   CDN_URL = "https://assets.scantoserve.com/"
   BLOB_URL = "https://blob.scantoserve.com/"
   API_ENDPOINT = "https://api.scantoserve.com"
+  HUBRISE_CLIENT_ID = "925386709174.clients.hubrise.com"
+  HUBRISE_CLIENT_SECRET = "0117db77c9b1c702a5c2e9261c503855029ef2555991df2d728ccf4f3fc97a8a"
+  HUBRISE_REDIRECT_URI = "https://api.scantoserve.com/api/hubrise/callback"
+  HUBRISE_SCOPE = "location[orders.write,catalog.write]"
+  HUBRISE_WEBHOOK_SECRET = "ZUKa3QsELW08ijF7PYGph5Tq216eRkDB"
+  ENCRYPTION_SECRET = "o/D3qrh6FBZ3KEHwKRX+vdQmx5qSSVFsFf4djVXltLM="
 EC_PUBLIC_KEY_PEM = """-----BEGIN PUBLIC KEY-----
 MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEFai15exM09bzjhnnjI37zLMZ2swt
 mY7n1jBeAfawXaNGXFU+TVQB3BWMRtDMPaPUrH9Ic2KXPYW+1f08nDpEng==
@@ -64,7 +76,13 @@ route = "https://api.scantoserve.com/api/hubrise/*"
   CDN_URL = "https://assets.scantoserve.com/"
   BLOB_URL = "https://blob.scantoserve.com/"
   API_ENDPOINT = "https://devapi.scantoserve.com"
-  EC_PUBLIC_KEY_PEM = """-----BEGIN PUBLIC KEY-----
+  HUBRISE_CLIENT_ID = "925386709174.clients.hubrise.com"
+  HUBRISE_CLIENT_SECRET = "0117db77c9b1c702a5c2e9261c503855029ef2555991df2d728ccf4f3fc97a8a"
+  HUBRISE_REDIRECT_URI = "https://api.scantoserve.com/api/hubrise/callback"
+  HUBRISE_SCOPE = "location[orders.write,catalog.write]"
+  HUBRISE_WEBHOOK_SECRET = "ZUKa3QsELW08ijF7PYGph5Tq216eRkDB"
+  ENCRYPTION_SECRET = "o/D3qrh6FBZ3KEHwKRX+vdQmx5qSSVFsFf4djVXltLM="
+EC_PUBLIC_KEY_PEM = """-----BEGIN PUBLIC KEY-----
 MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEFai15exM09bzjhnnjI37zLMZ2swt
 mY7n1jBeAfawXaNGXFU+TVQB3BWMRtDMPaPUrH9Ic2KXPYW+1f08nDpEng==
 -----END PUBLIC KEY-----"""
