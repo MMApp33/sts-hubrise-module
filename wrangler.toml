@@ -1,0 +1,72 @@
+name = "sts-hubrise-module"
+main = "src/index.js"
+compatibility_date = "2025-02-04"
+[observability.logs]
+enabled = true
+[[kv_namespaces]]
+  binding = "sts_menu"  
+  id = "8364235f06f6499caab8734a234beb71"
+[[d1_databases]]
+binding = "DB"
+database_name = "hubrise"
+database_id = "81ef3fc0-494d-4fa8-9a6b-9898d94636cf"
+
+[vars]
+  SAS_TOKEN = "sv=2024-11-04&ss=t&srt=sco&sp=rwdlacu&se=2028-04-14T01:06:12Z&st=2025-04-12T17:06:12Z&spr=https&sig=UHFsdYsZKz55YJWTMrwDhV2%2FEOm%2FLgHFAKPLDu6jzYw%3D"
+  STORAG_BASE_URL = "https://scantoservedev.table.core.windows.net"
+  TOKEN_ISSUER ="https://assets.scantoserve.com/discovery/v2.0/keys"
+  TOKEN_AUDIANCE = "https://api.scantoserve.com/Ireland"
+  CDN_URL = "https://assets.scantoserve.com/"
+  BLOB_URL = "https://blob.scantoserve.com/"
+  API_ENDPOINT = "https://devapi.scantoserve.com"
+EC_PUBLIC_KEY_PEM = """-----BEGIN PUBLIC KEY-----
+MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEFai15exM09bzjhnnjI37zLMZ2swt
+mY7n1jBeAfawXaNGXFU+TVQB3BWMRtDMPaPUrH9Ic2KXPYW+1f08nDpEng==
+-----END PUBLIC KEY-----"""
+APP_ENV = "development"
+FCM_PROJECT_ID ="scantoserve-34bff"
+[env.dev]
+routes = ["https://api.scantoserve.com/api/hubrise/*"]
+
+[[env.dev.kv_namespaces]]
+  binding = "sts_menu"  
+  id = "8364235f06f6499caab8734a234beb71"
+[[env.dev.d1_databases]]
+  binding = "DB"
+  database_name = "hubrise"
+  database_id = "81ef3fc0-494d-4fa8-9a6b-9898d94636cf"
+
+[env.dev.vars]
+  STORAG_BASE_URL = "https://scantoserverprod.table.core.windows.net"
+  CDN_URL = "https://assets.scantoserve.com/"
+  BLOB_URL = "https://blob.scantoserve.com/"
+  API_ENDPOINT = "https://api.scantoserve.com"
+EC_PUBLIC_KEY_PEM = """-----BEGIN PUBLIC KEY-----
+MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEFai15exM09bzjhnnjI37zLMZ2swt
+mY7n1jBeAfawXaNGXFU+TVQB3BWMRtDMPaPUrH9Ic2KXPYW+1f08nDpEng==
+-----END PUBLIC KEY-----"""
+APP_ENV = "development"
+FCM_PROJECT_ID ="scantoserve-34bff"
+
+[env.Ireland]
+route = "https://api.scantoserve.com/api/hubrise/*"
+
+[[env.Ireland.kv_namespaces]]
+  binding = "sts_menu"  
+  id = "8364235f06f6499caab8734a234beb71"
+[[env.Ireland.d1_databases]]
+  binding = "DB"
+  database_name = "hubrise"
+  database_id = "81ef3fc0-494d-4fa8-9a6b-9898d94636cf"
+
+[env.Ireland.vars]
+  STORAG_BASE_URL = "https://scantoservedev.table.core.windows.net"
+  CDN_URL = "https://assets.scantoserve.com/"
+  BLOB_URL = "https://blob.scantoserve.com/"
+  API_ENDPOINT = "https://devapi.scantoserve.com"
+  EC_PUBLIC_KEY_PEM = """-----BEGIN PUBLIC KEY-----
+MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEFai15exM09bzjhnnjI37zLMZ2swt
+mY7n1jBeAfawXaNGXFU+TVQB3BWMRtDMPaPUrH9Ic2KXPYW+1f08nDpEng==
+-----END PUBLIC KEY-----"""
+APP_ENV = "production"
+FCM_PROJECT_ID ="scantoserve-34bff"
