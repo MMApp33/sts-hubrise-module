@@ -6,7 +6,7 @@
 1. Go to https://manager.hubrise.com/developers
 2. Create a new application
 3. Copy your **Client ID** and **Client Secret**
-4. Add redirect URI: `https://devapi.scantoserve.com/api/hubrise/callback`
+4. Add redirect URI: `https://api.scantoserve.com/api/hubrise/callback`
 
 ### Step 2: Generate Secrets (1 minute)
 ```powershell
@@ -24,7 +24,7 @@ Add these lines after `FCM_PROJECT_ID` in your `wrangler.toml`:
 # HubRise Integration
 HUBRISE_CLIENT_ID = "your_client_id_from_step_1"
 HUBRISE_CLIENT_SECRET = "your_client_secret_from_step_1"
-HUBRISE_REDIRECT_URI = "https://devapi.scantoserve.com/api/hubrise/callback"
+HUBRISE_REDIRECT_URI = "https://api.scantoserve.com/api/hubrise/callback"
 HUBRISE_SCOPE = "location[orders.write,catalog.write]"
 HUBRISE_WEBHOOK_SECRET = "your_generated_webhook_secret"
 ENCRYPTION_SECRET = "your_generated_encryption_secret"
@@ -46,7 +46,7 @@ wrangler deploy --env=dev
 Your HubRise integration is now live. Test it:
 
 ```bash
-curl -X GET https://devapi.scantoserve.com/api/hubrise/status \
+curl -X GET https://api.scantoserve.com/api/hubrise/status \
   -H "Authorization: Bearer YOUR_JWT_TOKEN"
 ```
 
@@ -89,7 +89,7 @@ const connectHubRise = async () => {
 
 Check if orders are coming in:
 ```bash
-curl -X GET "https://devapi.scantoserve.com/api/hubrise/orders" \
+curl -X GET "https://api.scantoserve.com/api/hubrise/orders" \
   -H "Authorization: Bearer YOUR_JWT_TOKEN"
 ```
 
