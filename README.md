@@ -1,0 +1,1 @@
+# sts-hubrise-module
